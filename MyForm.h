@@ -63,6 +63,10 @@ namespace KURVA {
 	private: System::Windows::Forms::Button^ WAITING;
 	private: System::Windows::Forms::CheckBox^ checkBox1;
 		private: System::Windows::Forms::Button^ DeArHiVe;
+		private: System::Windows::Forms::Button^ File1Crash;
+		private: System::Windows::Forms::Button^ File2Crash;
+		private: System::Windows::Forms::Button^ File3Crash;
+		private: System::Windows::Forms::Button^ File4Crash;
 
 
 
@@ -97,6 +101,10 @@ namespace KURVA {
 			this->WAITING = (gcnew System::Windows::Forms::Button());
 			this->checkBox1 = (gcnew System::Windows::Forms::CheckBox());
 			this->DeArHiVe = (gcnew System::Windows::Forms::Button());
+			this->File1Crash = (gcnew System::Windows::Forms::Button());
+			this->File2Crash = (gcnew System::Windows::Forms::Button());
+			this->File3Crash = (gcnew System::Windows::Forms::Button());
+			this->File4Crash = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			this->SuspendLayout();
@@ -137,7 +145,7 @@ namespace KURVA {
 			// PLAY
 			// 
 			this->PLAY->BackColor = System::Drawing::Color::Yellow;
-			this->PLAY->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->PLAY->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->PLAY->Font = (gcnew System::Drawing::Font(L"Palatino Linotype", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->PLAY->Location = System::Drawing::Point(1143, 571);
@@ -218,13 +226,14 @@ namespace KURVA {
 			// WAITING
 			// 
 			this->WAITING->BackColor = System::Drawing::Color::SpringGreen;
+			this->WAITING->Cursor = System::Windows::Forms::Cursors::AppStarting;
 			this->WAITING->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->WAITING->Font = (gcnew System::Drawing::Font(L"Palatino Linotype", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->WAITING->Location = System::Drawing::Point(1143, 571);
+			this->WAITING->Location = System::Drawing::Point(1160, 571);
 			this->WAITING->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->WAITING->Name = L"WAITING";
-			this->WAITING->Size = System::Drawing::Size(179, 46);
+			this->WAITING->Size = System::Drawing::Size(161, 46);
 			this->WAITING->TabIndex = 13;
 			this->WAITING->Text = L"Proces...";
 			this->WAITING->UseVisualStyleBackColor = false;
@@ -251,15 +260,74 @@ namespace KURVA {
 			this->DeArHiVe->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->DeArHiVe->Font = (gcnew System::Drawing::Font(L"Palatino Linotype", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->DeArHiVe->Location = System::Drawing::Point(1143, 571);
+			this->DeArHiVe->Location = System::Drawing::Point(1177, 571);
 			this->DeArHiVe->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->DeArHiVe->Name = L"DeArHiVe";
-			this->DeArHiVe->Size = System::Drawing::Size(179, 46);
+			this->DeArHiVe->Size = System::Drawing::Size(144, 46);
 			this->DeArHiVe->TabIndex = 15;
 			this->DeArHiVe->Text = L"Dearchive";
 			this->DeArHiVe->UseVisualStyleBackColor = false;
 			this->DeArHiVe->Visible = false;
 			this->DeArHiVe->Click += gcnew System::EventHandler(this, &MyForm::DeArHiVe_Click);
+			// 
+			// File1Crash
+			// 
+			this->File1Crash->BackColor = System::Drawing::Color::Red;
+			this->File1Crash->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->File1Crash->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->File1Crash->Location = System::Drawing::Point(455, 550);
+			this->File1Crash->Margin = System::Windows::Forms::Padding(0);
+			this->File1Crash->Name = L"File1Crash";
+			this->File1Crash->Size = System::Drawing::Size(169, 46);
+			this->File1Crash->TabIndex = 16;
+			this->File1Crash->Text = L"File 1 Crashed\r\nReload File 1";
+			this->File1Crash->UseVisualStyleBackColor = false;
+			this->File1Crash->Visible = false;
+			this->File1Crash->Click += gcnew System::EventHandler(this, &MyForm::File1Crash_Click);
+			// 
+			// File2Crash
+			// 
+			this->File2Crash->BackColor = System::Drawing::Color::Red;
+			this->File2Crash->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->File2Crash->Location = System::Drawing::Point(624, 550);
+			this->File2Crash->Margin = System::Windows::Forms::Padding(0);
+			this->File2Crash->Name = L"File2Crash";
+			this->File2Crash->Size = System::Drawing::Size(169, 46);
+			this->File2Crash->TabIndex = 17;
+			this->File2Crash->Text = L"File 2 Crashed\r\nReload File 2";
+			this->File2Crash->UseVisualStyleBackColor = false;
+			this->File2Crash->Visible = false;
+			this->File2Crash->Click += gcnew System::EventHandler(this, &MyForm::File2Crash_Click);
+			// 
+			// File3Crash
+			// 
+			this->File3Crash->BackColor = System::Drawing::Color::Red;
+			this->File3Crash->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->File3Crash->Location = System::Drawing::Point(793, 550);
+			this->File3Crash->Margin = System::Windows::Forms::Padding(0);
+			this->File3Crash->Name = L"File3Crash";
+			this->File3Crash->Size = System::Drawing::Size(169, 46);
+			this->File3Crash->TabIndex = 18;
+			this->File3Crash->Text = L"File 3 Crashed\r\nReload File 3";
+			this->File3Crash->UseVisualStyleBackColor = false;
+			this->File3Crash->Visible = false;
+			this->File3Crash->Click += gcnew System::EventHandler(this, &MyForm::File3Crash_Click);
+			// 
+			// File4Crash
+			// 
+			this->File4Crash->BackColor = System::Drawing::Color::Red;
+			this->File4Crash->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->File4Crash->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->File4Crash->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->File4Crash->Location = System::Drawing::Point(963, 550);
+			this->File4Crash->Margin = System::Windows::Forms::Padding(0);
+			this->File4Crash->Name = L"File4Crash";
+			this->File4Crash->Size = System::Drawing::Size(169, 46);
+			this->File4Crash->TabIndex = 19;
+			this->File4Crash->Text = L"File 4 Crashed\r\nReload File 4";
+			this->File4Crash->UseVisualStyleBackColor = false;
+			this->File4Crash->Visible = false;
+			this->File4Crash->Click += gcnew System::EventHandler(this, &MyForm::File4Crash_Click);
 			// 
 			// MyForm
 			// 
@@ -268,6 +336,10 @@ namespace KURVA {
 			this->BackColor = System::Drawing::Color::Black;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->ClientSize = System::Drawing::Size(1325, 676);
+			this->Controls->Add(this->File4Crash);
+			this->Controls->Add(this->File3Crash);
+			this->Controls->Add(this->File2Crash);
+			this->Controls->Add(this->File1Crash);
 			this->Controls->Add(this->DeArHiVe);
 			this->Controls->Add(this->checkBox1);
 			this->Controls->Add(this->WAITING);
@@ -279,7 +351,7 @@ namespace KURVA {
 			this->Controls->Add(this->progressBar1);
 			this->Controls->Add(this->DOWNLOADB);
 			this->Controls->Add(this->pictureBox2);
-			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::Fixed3D;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"MyForm";
@@ -297,36 +369,20 @@ namespace KURVA {
 
 #pragma endregion
 
-	private: static const char* PathTik1 = "C:\\Igrushka\\WindowsNoEditor.part4.rar";
+	
 	private: static const char* PPLAY_C = "start C:/Igrushka/WindowsNoEditor/myProject.exe";
 	private: static const char* dearchPath = "start C:/Igrushka/WindowsNoEditor.part1.exe";
 
-	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
-		
-	}
+
+	private: void isFilesOk();
+	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void DOWNLOADB_Click(System::Object^ sender, System::EventArgs^ e);
 
 	private: System::Void progressBar1_Click(System::Object^ sender, System::EventArgs^ e) {
 
 	}
-	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
-
-			auto DownEnd = false;
-
-			auto ifs = std::ifstream(PathTik1, std::ios::binary);
-			ifs.seekg(0, std::ios::end);
-			auto size = ifs.tellg();
-			if(size>20) DownEnd = true;
-			if(DownEnd) {
-				c = 99;
-				if(PLAY->Visible == false){
-					this->DeArHiVe->Visible = true;
-				}
-				
-				this->WAITING->Visible = false;
-				this->timer1->Stop();
-			}
-	}
+	
+	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e);
 			
 	private: System::Void PLAY_Click(System::Object^ sender, System::EventArgs^ e) {
 		system(PPLAY_C);
@@ -345,7 +401,15 @@ namespace KURVA {
 			
 	}
 	public: System::Void DeArHiVe_Click(System::Object^ sender, System::EventArgs^ e) {
+	
 	system(dearchPath);
 	}
+	private: System::Void File1Crash_Click(System::Object^ sender, System::EventArgs^ e);
+
+	private: System::Void File2Crash_Click(System::Object^ sender, System::EventArgs^ e);
+
+	private: System::Void File3Crash_Click(System::Object^ sender, System::EventArgs^ e);
+
+	private: System::Void File4Crash_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }
