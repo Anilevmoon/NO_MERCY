@@ -8,6 +8,7 @@
 #pragma comment (lib, "urlmon.lib")
 #include <thread>   
 #include<WinInet.h>
+#include <stdio.h>
 
 int FileSize(const char* path) {
 	auto ifs = std::ifstream(path, std::ios::binary);
@@ -18,7 +19,7 @@ int FileSize(const char* path) {
 
 
 int asyncDownTestFile() {
-	auto th = std::thread{ [=] {
+	auto th = std::thread{ [&] {
 
 	HINTERNET hInternetSession;
 	HINTERNET hURL;
@@ -28,12 +29,13 @@ int asyncDownTestFile() {
 
 
 	hInternetSession = InternetOpen(L"", INTERNET_OPEN_TYPE_PRECONFIG, NULL, NULL, 0);
-	hURL = InternetOpenUrl(hInternetSession, L"http://185.233.36.66:7777/nesty_test/Game/SPEED.rar", NULL, 0, 0, 0);
+	hURL = InternetOpenUrl(hInternetSession, L"http://185.233.36.66:7777/nesty_test/Game/VIDTEST.mp4", NULL, 0, 0, 0);
 
 	char buf[1024];
 	DWORD dwTemp;
-	HANDLE hFile = CreateFile(L"C:\\Igrushka\\ViDoTEST.rar", GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
-
+	HANDLE hFile = CreateFile(L"C:\\Igrushka\\ViDoTEST.mp4", GENERIC_WRITE, 0, NULL, CREATE_NEW, (FILE_ATTRIBUTE_NORMAL, FILE_FLAG_OVERLAPPED, FILE_FLAG_WRITE_THROUGH, FILE_FLAG_NO_BUFFERING), NULL);
+	
+	
 	for (; dwBytesRead > 0;)
 	{
 		InternetReadFile(hURL, buf, (DWORD)sizeof(buf), &dwBytesRead);
@@ -75,15 +77,15 @@ bool IsDownloadedYet(const char* Path) {
 }
 
 double conectionSpeed(const char* Path) {
-	DeleteFile(L"C:\\Igrushka\\ViDoTEST.rar");
-	auto time = 0.0;
+	DeleteFile(L"C:\\Igrushka\\ViDoTEST.mp4");	auto time = 0.0;
 	asyncDownTestFile();
-	auto inc = IsDownloadedYet("C:\\Igrushka\\ViDoTEST.rar");
+	auto inc = IsDownloadedYet("C:\\Igrushka\\ViDoTEST.mp4");
 	while(!inc) {
 		time += 0.1;
 		Sleep(100);
-		inc = IsDownloadedYet("C:\\Igrushka\\ViDoTEST.rar");
+		inc = IsDownloadedYet("C:\\Igrushka\\ViDoTEST.mp4");
 	}
-	auto TimSize = FileSize("C:\\Igrushka\\ViDoTEST.rar") / (1024*1024);
+	auto TimSize = FileSize("C:\\Igrushka\\ViDoTEST.mp4") / (1024*1024);
+	DeleteFile(L"C:\\Igrushka\\ViDoTEST.mp4");
 	return TimSize / time;
 }

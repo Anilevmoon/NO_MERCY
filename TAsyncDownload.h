@@ -61,7 +61,7 @@ LPCTSTR Path4URL = FouthExeURL;
 auto VERtxtPath = TEXT("C:\\Igrushka\\VERSION.txt");
 LPCTSTR PathVersionTXT = VERtxtPath;
 auto VERtxtURL = TEXT("http://185.233.36.66:7777/nesty_test/Game/version.txt");
-LPCTSTR URLversionTXT = VERtxtURL ;
+LPCTSTR URLversionTXT = VERtxtURL;
 
 bool CheckFile() {
 	auto file = std::ifstream("C:\\Igrushka\\VERSION.txt");
@@ -87,8 +87,7 @@ void V2YskolaichDownload(LPCTSTR Path, LPCTSTR URL) {
 	DWORD dwTemp;
 	HANDLE hFile = CreateFile(Path, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
 
-	for (; dwBytesRead > 0;)
-	{
+	for(; dwBytesRead > 0;) {
 		InternetReadFile(hURL, buf, (DWORD)sizeof(buf), &dwBytesRead);
 		WriteFile(hFile, buf, dwBytesRead, &dwTemp, NULL);
 	}
@@ -100,7 +99,7 @@ void V2YskolaichDownload(LPCTSTR Path, LPCTSTR URL) {
 }
 
 void ASYNCV2YskolaichDownload(LPCTSTR Path, LPCTSTR URL) {
-	auto th = std::thread{ [=] {
+	auto th = std::thread {[=] {
 	HINTERNET hInternetSession;
 	HINTERNET hURL;
 
@@ -115,8 +114,7 @@ void ASYNCV2YskolaichDownload(LPCTSTR Path, LPCTSTR URL) {
 	DWORD dwTemp;
 	HANDLE hFile = CreateFile(Path, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
 
-	for (; dwBytesRead > 0;)
-	{
+	for(; dwBytesRead > 0;) {
 		InternetReadFile(hURL, buf, (DWORD)sizeof(buf), &dwBytesRead);
 		WriteFile(hFile, buf, dwBytesRead, &dwTemp, NULL);
 	}
@@ -132,21 +130,21 @@ void ASYNCV2YskolaichDownload(LPCTSTR Path, LPCTSTR URL) {
 
 
 void AsyncDownloader() {
-	auto th = std::thread{ [&] {
+	auto th = std::thread {[&] {
 
+		V2YskolaichDownload(PathVersionTXT, URLversionTXT);
 		V2YskolaichDownload(Path1exe, Path1URL);
 		V2YskolaichDownload(Path2exe, Path2URL);
 		V2YskolaichDownload(Path3exe, Path3URL);
 		V2YskolaichDownload(Path4exe, Path4URL);
-		V2YskolaichDownload(PathVersionTXT, URLversionTXT);
 		}
 	};
 	th.detach();
 }
 
 
-void AsyncCinCrement(const double size, const double speed) {
-	pointsByInrementPer500mls = 100 / ( ( size  / speed ) / 0.5);
+void AsyncCinCrement(const double size, const double speed, const int points) {
+	pointsByInrementPer500mls = points / ((size  / speed) / 0.5);
 	auto Ccontrol = std::thread([] {
 		do {
 			if(c + pointsByInrementPer500mls>=100) {
@@ -173,7 +171,7 @@ bool UpdateDetect() {
 			getline(in, oldVer);
 			in.close();
 		}
-		
+
 		V2YskolaichDownload(PathVersionTXT, URLversionTXT);
 
 		auto newVer = std::string();
